@@ -7,6 +7,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 # Load environment variables
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+print("TOKEN =", TOKEN)  # Debug print
 
 # Load model and tokenizer
 model_path = "model"
