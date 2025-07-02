@@ -42,6 +42,12 @@ python main.py
 ```
 
 The bot will begin listening on Telegram for input.
+## Try the Bot
+
+You can test it live at:
+
+[https://t.me/FactCheck_FakeNewsDetection_bot](https://t.me/FactCheck_FakeNewsDetection_bot)
+
 
 ## Credits
 
