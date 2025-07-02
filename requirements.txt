@@ -8,3 +8,4 @@ opencv-python
 python-telegram-bot==20.3
 newspaper3k
 python-dotenv
+flask
