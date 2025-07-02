@@ -35,7 +35,7 @@ async def predict(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = f"Prediction: *{label}*\nConfidence: {confidence*100:.2f}%"
     await update.message.reply_text(response, parse_mode='Markdown')
 
-# === Start the Telegram bot in a thread ===
+# === Start the Telegram bot in a background thread ===
 def run_telegram_bot():
     application = ApplicationBuilder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", start))
@@ -44,7 +44,7 @@ def run_telegram_bot():
 
 threading.Thread(target=run_telegram_bot).start()
 
-# === Dummy Flask server to keep Render happy ===
+# === Dummy Flask server to keep Render alive ===
 app = Flask(__name__)
 
 @app.route("/")
@@ -52,4 +52,5 @@ def index():
     return "Telegram Fake News Bot is running!"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))  # Use dynamic port from Render
+    app.run(host="0.0.0.0", port=port)
