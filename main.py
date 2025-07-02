@@ -11,9 +11,10 @@ import threading
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
-# === Load model and tokenizer ===
-model = DistilBertForSequenceClassification.from_pretrained("model")
-tokenizer = DistilBertTokenizerFast.from_pretrained("model")
+# === Load model and tokenizer from Hugging Face Hub ===
+MODEL_REPO = "CrypticRAY/fake-news-distilbert"
+model = DistilBertForSequenceClassification.from_pretrained(MODEL_REPO)
+tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_REPO)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 model.eval()
