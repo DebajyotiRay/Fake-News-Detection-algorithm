@@ -1,6 +1,12 @@
+import os
+import torch
+from dotenv import load_dotenv
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import torch
+
+# Load environment variables
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # Load model and tokenizer
 model_path = "model"
@@ -19,11 +25,11 @@ def predict(text):
         pred = torch.argmax(probs).item()
         confidence = probs[0][pred].item()
         label = "FAKE" if pred == 1 else "REAL"
-        return f"🧠 Prediction: {label} (Confidence: {confidence*100:.2f}%)"
+        return f"Prediction: {label} (Confidence: {confidence*100:.2f}%)"
 
 # Telegram start command
 def start(update, context):
-    update.message.reply_text("👋 Welcome! Send me a news headline and I’ll tell you if it’s FAKE or REAL.")
+    update.message.reply_text("Send me a news headline and I’ll tell you if it’s FAKE or REAL.")
 
 # Handle normal messages
 def handle_message(update, context):
@@ -33,7 +39,6 @@ def handle_message(update, context):
 
 # Main runner
 def main():
-    TOKEN = "8141790891:AAFEW3w_N-NdFA9lnhDS9mYHHroLfp3ct9s"
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
