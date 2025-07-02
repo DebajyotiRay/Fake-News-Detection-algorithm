@@ -40,6 +40,8 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
+Note: Bot token is loaded securely from a local .env file and excluded from the repository.
+
 
 The bot will begin listening on Telegram for input.
 ## Try the Bot
