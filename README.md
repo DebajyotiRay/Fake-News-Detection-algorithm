@@ -7,6 +7,14 @@ This project is a Telegram bot that uses a fine-tuned DistilBERT model to detect
 - Classifies the input as FAKE or REAL
 - Returns prediction along with confidence score
 - Trained on merged datasets including sarcasm, fake, true, and challenging examples
+  
+##  Live Demo on Hugging Face Spaces
+
+You can try out the Fake News Detection model instantly in your browser, no installation required:
+
+ [**Launch Web Demo**](https://huggingface.co/spaces/CrypticRAY/fake-news-detector)
+
+This Gradio-powered interface uses a fine-tuned DistilBERT model to classify news headlines as FAKE or REAL in real-time.
 
 ## Folder Structure
 
